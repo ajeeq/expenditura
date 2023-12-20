@@ -1,12 +1,13 @@
 import React from 'react';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { StatusBar } from 'expo-status-bar';
-
+import { Link } from 'expo-router';
 import {
   View,
   Text,
   Box,
+  VStack,
+  HStack,
   Input,
+  Pressable,
   Button,
   ButtonText,
   InputField,
@@ -21,19 +22,21 @@ import {
   
 } from '@gluestack-ui/themed';
 
-export default function HomeScreen() {
+export default function RegisterScreen() {
   return (
     <View flex={1} alignItems="center">
       <Box flex={1} w="$full" px="$4">
-        <Text>Enter daily expense</Text>
-
-        <Box mt="$4">
+      <Box alignItems='center'>
+          <Text>Register</Text>
+        </Box>
+        
+        <VStack mt="$8">
           <FormControl>
             <FormControlLabel mb="$1">
-              <FormControlLabelText>Item</FormControlLabelText>
+              <FormControlLabelText>Email</FormControlLabelText>
             </FormControlLabel>
             <Input>
-              <InputField type="text" placeholder="item" />
+              <InputField type="text" placeholder="Enter your email" />
             </Input>
             {/* <FormControlError>
               <FormControlErrorIcon as={AlertCircleIcon} />
@@ -45,10 +48,10 @@ export default function HomeScreen() {
 
           <FormControl mt="$4">
             <FormControlLabel mb="$1">
-              <FormControlLabelText>Price</FormControlLabelText>
+              <FormControlLabelText>Password</FormControlLabelText>
             </FormControlLabel>
             <Input>
-              <InputField type="text" placeholder="RM" keyboardType='decimal-pad'/>
+              <InputField type="password" placeholder="Enter your password" />
             </Input>
             {/* <FormControlError>
               <FormControlErrorIcon as={AlertCircleIcon} />
@@ -62,10 +65,21 @@ export default function HomeScreen() {
             <Button onPress={() => {
               console.log("button pressed")
             }}>
-              <ButtonText>Add</ButtonText>
+              <ButtonText>Create an account</ButtonText>
             </Button>
           </Box>
-        </Box>
+
+          <VStack mt="$4" alignItems='center'>
+            <HStack>
+              <Text>Don't have an account?</Text>
+              <Link
+                replace
+                href="/LoginScreen">
+                <Text> Login here</Text>
+              </Link>
+            </HStack>
+          </VStack>
+        </VStack>
       </Box>
     </View>
   );

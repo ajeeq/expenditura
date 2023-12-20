@@ -1,6 +1,4 @@
 import React from 'react';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { StatusBar } from 'expo-status-bar';
 import {
   View,
   Text,
@@ -13,35 +11,32 @@ import {
 import data from '@/data/122023.json';
 
 export default function SecondaryScreen() {
-  const insets = useSafeAreaInsets();
-
   return (
-    <View flex={1} alignItems="center" style={{
-      paddingTop: insets.top
-    }}>
+    <View flex={1} alignItems="center">
       <Box flex={1} w="$full">
         <Box px="$4">
           <Text>Monthly expense sums up</Text>
         </Box>
         
         <ScrollView px="$4">
-        {data.days.map((d) => (
-          <Box
-            borderRadius={4}
-            borderWidth={1}
-            mt="$4"
-          >
-            <VStack flex={1} p="$4">
-              <Text>{d.date}</Text>
-              {d.items.map((item) => (
-                <HStack justifyContent="space-between">
-                  <Text>{item.item_name}</Text>
-                  <Text>RM{item.item_price}</Text>
-                </HStack>
-              ))}
-            </VStack>
-          </Box>
-        ))}
+          {data.days.map((d, i) => (
+            <Box
+              borderRadius={4}
+              borderWidth={1}
+              mt="$4"
+              key={i}
+            >
+              <VStack flex={1} p="$4">
+                <Text>{d.date}</Text>
+                {d.items.map((item, index) => (
+                  <HStack justifyContent="space-between" key={index}>
+                    <Text>{item.item_name}</Text>
+                    <Text>RM{item.item_price}</Text>
+                  </HStack>
+                ))}
+              </VStack>
+            </Box>
+          ))}
         </ScrollView>
 
         <VStack 

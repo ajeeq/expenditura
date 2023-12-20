@@ -1,12 +1,13 @@
 import React from 'react';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { StatusBar } from 'expo-status-bar';
-
+import { router } from 'expo-router';
 import {
   View,
   Text,
   Box,
+  VStack,
+  HStack,
   Input,
+  Pressable,
   Button,
   ButtonText,
   InputField,
@@ -21,19 +22,21 @@ import {
   
 } from '@gluestack-ui/themed';
 
-export default function HomeScreen() {
+export default function LoginScreen() {
   return (
     <View flex={1} alignItems="center">
       <Box flex={1} w="$full" px="$4">
-        <Text>Enter daily expense</Text>
-
-        <Box mt="$4">
+        <Box alignItems='center'>
+          <Text>Login</Text>
+        </Box>
+        
+        <VStack mt="$8">
           <FormControl>
             <FormControlLabel mb="$1">
-              <FormControlLabelText>Item</FormControlLabelText>
+              <FormControlLabelText>Email</FormControlLabelText>
             </FormControlLabel>
             <Input>
-              <InputField type="text" placeholder="item" />
+              <InputField type="text" placeholder="Enter your email" />
             </Input>
             {/* <FormControlError>
               <FormControlErrorIcon as={AlertCircleIcon} />
@@ -45,10 +48,10 @@ export default function HomeScreen() {
 
           <FormControl mt="$4">
             <FormControlLabel mb="$1">
-              <FormControlLabelText>Price</FormControlLabelText>
+              <FormControlLabelText>Password</FormControlLabelText>
             </FormControlLabel>
             <Input>
-              <InputField type="text" placeholder="RM" keyboardType='decimal-pad'/>
+              <InputField type="password" placeholder="Enter your password" />
             </Input>
             {/* <FormControlError>
               <FormControlErrorIcon as={AlertCircleIcon} />
@@ -59,13 +62,37 @@ export default function HomeScreen() {
           </FormControl>
 
           <Box mt="$4">
+            {/* <Link
+              push
+              href="/HomeScreen"
+            >
+              <Button>
+                <ButtonText>Continue</ButtonText>
+              </Button>
+            </Link> */}
+
+
             <Button onPress={() => {
-              console.log("button pressed")
+                router.push('HomeScreen')
             }}>
-              <ButtonText>Add</ButtonText>
+              <ButtonText>Continue</ButtonText>
             </Button>
           </Box>
-        </Box>
+
+          <VStack space='sm' mt="$4" alignItems='center'>
+            <HStack>
+              <Text>Don't have an account?</Text>
+              <Pressable  onPress={() => {
+                router.push('RegisterScreen')
+              }}> 
+                <Text> Register Here</Text>
+              </Pressable>
+            </HStack>
+            <Text>Forgot Password</Text>
+          </VStack>
+        </VStack>
+
+        
       </Box>
     </View>
   );

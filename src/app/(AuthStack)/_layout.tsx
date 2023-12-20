@@ -1,9 +1,9 @@
 import React from 'react';
-import { Tabs } from 'expo-router/tabs';
+import { Stack } from 'expo-router/stack';
 import { View } from '@gluestack-ui/themed';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-export default function BottomTab() {
+export default function AuthStack() {
   const insets = useSafeAreaInsets();
   
   return (
@@ -14,18 +14,18 @@ export default function BottomTab() {
         // paddingLeft: insets.left,
         // paddingRight: insets.right,
       }}>
-        <Tabs
+        <Stack
           screenOptions={{
             headerShown: false
           }}
         >
-          <Tabs.Screen 
-            name='HomeScreen'
+          <Stack.Screen 
+            name='LoginScreen'
           />
-          <Tabs.Screen 
-            name='SecondaryScreen'
+          <Stack.Screen 
+            name='RegisterScreen'
           />
-        </Tabs>
+        </Stack>
       </View>
     </View>
   );

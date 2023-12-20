@@ -1,15 +1,13 @@
 import React from 'react';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Stack, Redirect } from 'expo-router';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import { GluestackUIProvider, Text, Box } from '@gluestack-ui/themed';
+import { GluestackUIProvider, View, Text, Box } from '@gluestack-ui/themed';
 import { config } from '@gluestack-ui/config';
 
-// Screens
-import HomeScreen from '@/app/(BottomTab)/HomeScreen';
-
 export default function App() {
+  const insets = useSafeAreaInsets();
   // const [isLoaded] = useFonts(fonts);
 
   // // After the custom fonts have loaded, we can hide the splash screen and display the app screen.
@@ -22,15 +20,14 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <GluestackUIProvider config={config}>
-        <Stack>
-          <Stack.Screen 
-            name='(BottomTab)'
-            options={{
-              headerShown: false
-            }}
-          />
+        <Stack
+          screenOptions={{
+            headerShown: false
+          }}
+        >
+          <Stack.Screen name='(AuthStack)'/>
+          <Stack.Screen name='(BottomTab)'/>
         </Stack>
-       
       </GluestackUIProvider>
     </SafeAreaProvider>
   );
