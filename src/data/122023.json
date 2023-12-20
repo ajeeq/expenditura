@@ -1,0 +1,33 @@
+{
+  "total_month": 539.20,
+  "days": [
+    {
+      "date": "1 Dec 2023",
+      "items": [
+        {
+          "item_name": "nasi kandar murah",
+          "item_price": 20
+        },
+        {
+          "item_name": "burger murah",
+          "item_price": 3.90
+        }
+      ],
+      "total_day": 23.90
+    },
+    {
+      "date": "2 Dec 2023",
+      "items": [
+        {
+          "item_name": "nasi kandar mahal",
+          "item_price": 50
+        },
+        {
+          "item_name": "burger mahal",
+          "item_price": 12.70
+        }
+      ],
+      "total_day": 62.70
+    }
+  ]
+}
